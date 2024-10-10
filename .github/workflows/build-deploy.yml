@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v3  # Corrected extra '@'
 
     - name: Install Flutter
-      uses: subosito/flutter-action@v3  # Corrected extra '@'
+      uses: subosito/flutter-action@v4  # Corrected extra '@'
       
     - name: Get dependencies
       run: flutter pub get
