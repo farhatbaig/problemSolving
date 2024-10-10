@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_name/solution_challenge_one/solution_challenge_one.dart';
 import 'package:my_project_name/solution_challenge_three/solution_challenge_three.dart';
-import 'package:my_project_name/solution_challenege_two/solution_challenge_two.dart';
+import 'package:my_project_name/solution_challenge_two/solution_challenge_two.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
