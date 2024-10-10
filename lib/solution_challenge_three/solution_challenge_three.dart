@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-
-
 class NumerologyCalculator extends StatefulWidget {
   const NumerologyCalculator({super.key});
 
@@ -15,7 +12,6 @@ class _NumerologyCalculatorState extends State<NumerologyCalculator> {
   String heartDesireNumber = '';
   String personalityNumber = '';
 
-  // Mapping letters to their numerology numbers
   final Map<String, int> numerologyChart = {
     'A': 1, 'I': 1, 'J': 1, 'Q': 1, 'Y': 1,
     'B': 2, 'K': 2, 'R': 2,
@@ -29,27 +25,22 @@ class _NumerologyCalculatorState extends State<NumerologyCalculator> {
 
   final Set<String> vowels = {'A', 'E', 'I', 'O', 'U'};
 
-  // Function to calculate the numerology numbers
   void calculateNumerology(String name) {
     int destinySum = 0;
     int heartDesireSum = 0;
     int personalitySum = 0;
 
-    // Convert the name to uppercase to match the keys in the numerology chart
     List<String> nameLetters = name.toUpperCase().split('');
 
     for (String letter in nameLetters) {
       if (numerologyChart.containsKey(letter)) {
         int value = numerologyChart[letter]!;
 
-        // Add to Destiny Number (all letters)
         destinySum += value;
 
-        // Add to Heart Desire (vowels)
         if (vowels.contains(letter)) {
           heartDesireSum += value;
         } else {
-          // Add to Personality Number (consonants)
           personalitySum += value;
         }
       }
