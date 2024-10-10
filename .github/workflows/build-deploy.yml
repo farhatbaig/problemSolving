@@ -1,10 +1,7 @@
-name: Build & deploy
+name: Build & Deploy
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
     branches:
       - master
 
@@ -12,20 +9,20 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4  # Correct 'uses' format
+      uses: actions/checkout@v4
 
     - name: Install Flutter
-      uses: subosito/flutter-action@v2  # Corrected to v2 (latest stable version)
-      
+      uses: subosito/flutter-action@v2
+
     - name: Get dependencies
       run: flutter pub get
-    
+
     - name: Test project
       run: flutter test
-    
+
     - name: Build release project
       run: flutter build web
 
@@ -34,14 +31,17 @@ jobs:
       with:
         name: production-files
         path: ./build/web
-  
+
   deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    
+    permissions:
+      contents: write  # Ensure the token has write access to the repository
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Download artifact
       uses: actions/download-artifact@v4
       with:
